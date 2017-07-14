@@ -26,7 +26,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set("layout", "layout/main");
 app.use(expressLayouts);
-
+app.locals.title = 'repostars'
 
 
 // uncomment after placing your favicon in /public
