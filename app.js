@@ -10,10 +10,10 @@ const mongoose = require('mongoose');
 const expressLayouts = require('express-ejs-layouts');
 const passport = require('passport');
 
-// const {dbURL} = require('./config/db');
 
 const index = require('./routes/index');
 const auth = require('./routes/auth');
+const repos = require('./routes/repos');
 
 const dburl = process.env.MONGO_DB_URL;
 debug(`Conecting to ${dburl}`);
@@ -26,7 +26,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set("layout", "layout/main");
 app.use(expressLayouts);
-app.locals.title = 'repostars'
+app.locals.title = 'repostars';
 
 
 // uncomment after placing your favicon in /public
@@ -43,6 +43,7 @@ app.use(passport.session());
 
 app.use('/', index);
 app.use('/auth', auth);
+app.use('/repos', repos);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
